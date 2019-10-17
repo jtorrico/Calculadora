@@ -74,6 +74,7 @@
             this.txtbFormula.TabIndex = 1;
             this.txtbFormula.Text = "0";
             this.txtbFormula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtbFormula.TextChanged += new System.EventHandler(this.TxtbFormula_TextChanged);
             // 
             // btnBorrar
             // 
@@ -532,7 +533,6 @@
             this.txtbHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtbHistorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbHistorial.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.txtbHistorial.Enabled = false;
             this.txtbHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbHistorial.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtbHistorial.Location = new System.Drawing.Point(13, 27);
@@ -545,6 +545,7 @@
             this.txtbHistorial.TabIndex = 26;
             this.txtbHistorial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbHistorial.UseWaitCursor = true;
+            this.txtbHistorial.TextChanged += new System.EventHandler(this.TxtbHistorial_TextChanged);
             // 
             // lblContParentesis
             // 
