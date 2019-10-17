@@ -293,6 +293,16 @@ namespace Calculadora
             t.Start();
         }
 
-        
+        private void TxtbFormula_TextChanged(object sender, EventArgs e)
+        {
+            txtbFormula.SelectionStart = txtbFormula.Text.Length;
+            txtbFormula.ScrollToCaret();
+        }
+
+        private void TxtbHistorial_TextChanged(object sender, EventArgs e)
+        {
+            txtbFormula.SelectionStart = txtbFormula.Text.Length;
+            txtbFormula.ScrollToCaret();
+        }
     }
 }
