@@ -59,16 +59,16 @@
             // 
             // txtbFormula
             // 
-            this.txtbFormula.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtbFormula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtbFormula.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbFormula.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtbFormula.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbFormula.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.txtbFormula.Location = new System.Drawing.Point(15, 53);
+            this.txtbFormula.Location = new System.Drawing.Point(13, 52);
             this.txtbFormula.MaxLength = 80000;
             this.txtbFormula.Name = "txtbFormula";
             this.txtbFormula.ReadOnly = true;
+            this.txtbFormula.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtbFormula.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtbFormula.Size = new System.Drawing.Size(316, 55);
             this.txtbFormula.TabIndex = 1;
@@ -539,6 +539,8 @@
             this.txtbHistorial.MaxLength = 80000;
             this.txtbHistorial.Name = "txtbHistorial";
             this.txtbHistorial.ReadOnly = true;
+            this.txtbHistorial.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtbHistorial.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtbHistorial.Size = new System.Drawing.Size(318, 19);
             this.txtbHistorial.TabIndex = 26;
             this.txtbHistorial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
