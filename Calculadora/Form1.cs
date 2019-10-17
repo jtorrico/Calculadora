@@ -24,7 +24,71 @@ namespace Calculadora
                 txtbFormula.Clear();
             }
 
+            //Se habilitan todos los botones
+            btnMultiplicar.Enabled = true;
+            btnDividir.Enabled = true;
+            btnSumar.Enabled = true;
+            btnRestar.Enabled = true;
+
             Button button = (Button)sender;
+
+            //CONTROL DE BOTONES
+            if (button.Text == btnSumar.Text)
+            {
+                //No puede seguir un signo * o / después de -
+                btnMultiplicar.Enabled = false;
+                btnDividir.Enabled = false;
+                //No se puede repetir el mismo signo
+                btnSumar.Enabled = false;
+                //No se puede cambiar la suma por la resta
+                btnRestar.Enabled = false;
+
+            }
+            else if (button.Text == btnRestar.Text)
+            {
+                //No puede seguir un signo * o / después de -
+                btnMultiplicar.Enabled = false;
+                btnDividir.Enabled = false;
+                //No se puede repetir el mismo signo
+                btnRestar.Enabled = false;
+                //No se puede cambiar la resta por la suma
+                btnSumar.Enabled = false;
+
+            }
+            else if (button.Text == btnMultiplicar.Text)
+            {
+                //Luego de un signo multiplicar no puede haber un / o una +
+                btnDividir.Enabled = false;
+                btnSumar.Enabled = false;
+            }
+            else if (button.Text == btnDividir.Text)
+            {
+                //Luego de un signo dividir no puede haber una * o una +
+                btnMultiplicar.Enabled = false;
+                btnSumar.Enabled = false;
+            }
+            else if (txtbFormula.Text == "0")
+            {
+                //El calculo no puede iniciar con *, / o +
+                btnMultiplicar.Enabled = false;
+                btnDividir.Enabled = false;
+                btnSumar.Enabled = false;
+            }
+            else if (contParentesis > 0)
+            {
+                //Si hay paréntesis abiertos, se habilita el boton para cerrarlo
+                btnPC.Enabled = true;
+            }
+            else
+            {
+                //Si no se cumple ninguna de las condiciones anteriores se habilitan todos los botones
+                btnMultiplicar.Enabled = true;
+                btnDividir.Enabled = true;
+                btnSumar.Enabled = true;
+                btnRestar.Enabled = true;
+            }
+
+            //Se carga el texto del boton tocado a los text boxes
             txtbFormula.Text += button.Text;
             txtbHistorial.Text += button.Text;
 
@@ -36,6 +100,8 @@ namespace Calculadora
             txtbHistorial.Text = "";
             contParentesis = 0;
             lblContParentesis.Visible = false;
+            btnMultiplicar.Enabled = true;
+            btnDividir.Enabled = true;
         }
 
         private void BtnPA_Click(object sender, EventArgs e)
@@ -47,6 +113,7 @@ namespace Calculadora
             if (contParentesis > 0)
             {
                 lblContParentesis.Visible = true;
+                btnPC.Enabled = true;
             }
 
             if (txtbFormula.Text == "0")
@@ -56,8 +123,6 @@ namespace Calculadora
             txtbFormula.Text += "(";
             txtbHistorial.Text += "(";
         
-            //btnPA.Enabled = false;
-            //btnPC.Enabled = true;
         }
 
         private void BtnPC_Click(object sender, EventArgs e)
@@ -70,12 +135,15 @@ namespace Calculadora
             if (contParentesis > 0)
             {
                 lblContParentesis.Visible = true;
+                btnPC.Enabled = true;
             }
             else if (contParentesis <= 0)
             {
                 lblContParentesis.Visible = false;
+                btnPC.Enabled = false;
                 contParentesis = 0;
             }
+
 
             if (txtbFormula.Text == "0")
             {
@@ -84,9 +152,7 @@ namespace Calculadora
 
             txtbFormula.Text += ")";
             txtbHistorial.Text += ")";
-            
-            //btnPA.Enabled = true;
-            //btnPC.Enabled = false;
+
         }
 
         private void BtnPosNeg_Click(object sender, EventArgs e)
@@ -105,19 +171,53 @@ namespace Calculadora
         {
             try
             {
-                if(txtbFormula.Text.Substring(txtbFormula.Text.Length-1,1) == "(")
+                //Control de paréntesis abiertos al borrarlos
+                if (txtbFormula.Text.Substring(txtbFormula.Text.Length-1,1) == "(")
                 {
                     contParentesis -= 1;
                     lblContParentesis.Text = contParentesis.ToString();
                     if (contParentesis <= 0)
                     {
                         lblContParentesis.Visible = false;
-                        contParentesis = 0;
+                    }
+                } else if (txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == ")")
+                {
+                    contParentesis += 1;
+                    btnPC.Enabled = true;
+                    if (contParentesis > 0)
+                    {
+                        lblContParentesis.Visible = true;
                     }
                 }
 
-                txtbFormula.Text = txtbFormula.Text.Substring(0, txtbFormula.Text.Length - 1);
+                    //Se elimina el último caracter ingresado
+                    txtbFormula.Text = txtbFormula.Text.Substring(0, txtbFormula.Text.Length - 1);
                 txtbHistorial.Text = txtbHistorial.Text.Substring(0, txtbHistorial.Text.Length - 1);
+
+                //Control de botones al borrar
+                if (txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "+" || txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "-")
+                {
+                    //Si el último caracter es +, se deshabilita * ,/ ,- y +
+                    btnMultiplicar.Enabled = false;
+                    btnDividir.Enabled = false;
+                    btnSumar.Enabled = false;
+                    btnRestar.Enabled = false;
+                }
+                else if (txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "*" || txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "/")
+                {
+                    //Si el último caracter es *, se deshabilita * , / y +
+                    btnMultiplicar.Enabled = false;
+                    btnDividir.Enabled = false;
+                    btnSumar.Enabled = false;
+                }
+                else
+                {
+                    btnMultiplicar.Enabled = true;
+                    btnDividir.Enabled = true;
+                    btnSumar.Enabled = true;
+                    btnRestar.Enabled = true;
+                }
+
 
                 if (string.IsNullOrEmpty(txtbFormula.Text))
                 {
