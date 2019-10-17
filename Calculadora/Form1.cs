@@ -301,8 +301,8 @@ namespace Calculadora
 
         private void TxtbHistorial_TextChanged(object sender, EventArgs e)
         {
-            txtbFormula.SelectionStart = txtbFormula.Text.Length;
-            txtbFormula.ScrollToCaret();
+            txtbHistorial.SelectionStart = txtbHistorial.Text.Length;
+            txtbHistorial.ScrollToCaret();
         }
     }
 }
