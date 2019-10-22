@@ -49,7 +49,7 @@
             this.btn2 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
-            this.btnPosNeg = new System.Windows.Forms.Button();
+            this.btnAns = new System.Windows.Forms.Button();
             this.btnPunto = new System.Windows.Forms.Button();
             this.btnAcercaDe = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
@@ -457,25 +457,26 @@
             this.btn0.UseVisualStyleBackColor = false;
             this.btn0.Click += new System.EventHandler(this.Operacion_Click);
             // 
-            // btnPosNeg
+            // btnAns
             // 
-            this.btnPosNeg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPosNeg.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnPosNeg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnPosNeg.FlatAppearance.CheckedBackColor = System.Drawing.Color.Gray;
-            this.btnPosNeg.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnPosNeg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnPosNeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPosNeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPosNeg.ForeColor = System.Drawing.Color.Black;
-            this.btnPosNeg.Location = new System.Drawing.Point(15, 394);
-            this.btnPosNeg.Name = "btnPosNeg";
-            this.btnPosNeg.Size = new System.Drawing.Size(75, 50);
-            this.btnPosNeg.TabIndex = 22;
-            this.btnPosNeg.Text = "+ -";
-            this.btnPosNeg.UseVisualStyleBackColor = false;
-            this.btnPosNeg.Click += new System.EventHandler(this.BtnPosNeg_Click);
+            this.btnAns.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAns.Enabled = false;
+            this.btnAns.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnAns.FlatAppearance.CheckedBackColor = System.Drawing.Color.Gray;
+            this.btnAns.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnAns.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnAns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAns.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAns.ForeColor = System.Drawing.Color.Black;
+            this.btnAns.Location = new System.Drawing.Point(15, 394);
+            this.btnAns.Name = "btnAns";
+            this.btnAns.Size = new System.Drawing.Size(75, 50);
+            this.btnAns.TabIndex = 22;
+            this.btnAns.Text = "Ans";
+            this.btnAns.UseVisualStyleBackColor = false;
+            this.btnAns.Click += new System.EventHandler(this.BtnAns_Click);
             // 
             // btnPunto
             // 
@@ -574,7 +575,7 @@
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnAcercaDe);
             this.Controls.Add(this.btnPunto);
-            this.Controls.Add(this.btnPosNeg);
+            this.Controls.Add(this.btnAns);
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btn3);
             this.Controls.Add(this.btn2);
@@ -626,7 +627,7 @@
         private System.Windows.Forms.Button btn2;
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btn0;
-        private System.Windows.Forms.Button btnPosNeg;
+        private System.Windows.Forms.Button btnAns;
         private System.Windows.Forms.Button btnPunto;
         private System.Windows.Forms.Button btnAcercaDe;
         private System.Windows.Forms.Label lblError;

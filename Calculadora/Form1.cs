@@ -7,6 +7,7 @@ namespace Calculadora
     public partial class Form1 : Form
     {
         private int contParentesis;
+        private string resultado;
         public Form1()
         {
             InitializeComponent();
@@ -22,13 +23,18 @@ namespace Calculadora
             if (txtbFormula.Text == "0")
             {
                 txtbFormula.Clear();
+            } else if (txtbFormula.Text == resultado)
+            {
+                txtbFormula.Text = resultado;
+                txtbHistorial.Text = resultado;
             }
-
+            
             //Se habilitan todos los botones
             btnMultiplicar.Enabled = true;
             btnDividir.Enabled = true;
             btnSumar.Enabled = true;
             btnRestar.Enabled = true;
+            btnPunto.Enabled = true;
 
             Button button = (Button)sender;
 
@@ -79,6 +85,10 @@ namespace Calculadora
                 //Si hay paréntesis abiertos, se habilita el boton para cerrarlo
                 btnPC.Enabled = true;
             }
+            else if (button.Text == btnPunto.Text)
+            {
+                btnPunto.Enabled = false;
+            }
             else
             {
                 //Si no se cumple ninguna de las condiciones anteriores se habilitan todos los botones
@@ -86,7 +96,9 @@ namespace Calculadora
                 btnDividir.Enabled = true;
                 btnSumar.Enabled = true;
                 btnRestar.Enabled = true;
+                btnPunto.Enabled = true;
             }
+
 
             //Se carga el texto del boton tocado a los text boxes
             txtbFormula.Text += button.Text;
@@ -102,6 +114,7 @@ namespace Calculadora
             lblContParentesis.Visible = false;
             btnMultiplicar.Enabled = true;
             btnDividir.Enabled = true;
+            resultado = null;
         }
 
         private void BtnPA_Click(object sender, EventArgs e)
@@ -155,15 +168,17 @@ namespace Calculadora
 
         }
 
-        private void BtnPosNeg_Click(object sender, EventArgs e)
+        private void BtnAns_Click(object sender, EventArgs e)
         {
-            if (txtbFormula.Text.StartsWith("-"))
+            if (resultado != null)
             {
-                txtbFormula.Text = txtbFormula.Text.Substring(1);
-
-            }else if (!string.IsNullOrEmpty(txtbFormula.Text))
+                btnAns.Enabled = true;
+                txtbFormula.Text += resultado;
+                txtbHistorial.Text += resultado;
+            }
+            else
             {
-                txtbFormula.Text = "-" + txtbFormula.Text;
+                btnAns.Enabled = false;
             }
         }
 
@@ -242,7 +257,9 @@ namespace Calculadora
         {
             try
             {
-                string resultado = new DataTable().Compute(txtbFormula.Text, null).ToString().Replace(",", ".");
+                resultado = new DataTable().Compute(txtbFormula.Text, null).ToString().Replace(",", ".");
+
+                btnAns.Enabled = true;
 
                 if (Double.IsInfinity(Convert.ToDouble(resultado)))
                 {
@@ -250,7 +267,7 @@ namespace Calculadora
                 }
                 else
                 {
-                    txtbFormula.Text = resultado.ToString();
+                    txtbFormula.Text = resultado;
                 }
             }
             catch (DivideByZeroException)
