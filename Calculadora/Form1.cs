@@ -112,8 +112,9 @@ namespace Calculadora
             txtbHistorial.Text = "";
             contParentesis = 0;
             lblContParentesis.Visible = false;
-            btnMultiplicar.Enabled = true;
-            btnDividir.Enabled = true;
+            btnMultiplicar.Enabled = false;
+            btnDividir.Enabled = false;
+            btnSumar.Enabled = false;
             resultado = null;
         }
 
@@ -273,21 +274,25 @@ namespace Calculadora
             catch (DivideByZeroException)
             {
                 txtbFormula.Text = "0";
+                txtbHistorial.Text = "";
                 lblError.Text = "Division por 0!";
             }
             catch (InvalidCastException)
             {
                 txtbFormula.Text = "0";
+                txtbHistorial.Text = "";
                 lblError.Text = "Error de Casteo, revisar operacion!";
             }
             catch (SyntaxErrorException)
             {
                 txtbFormula.Text = "0";
+                txtbHistorial.Text = "";
                 lblError.Text = "Error de Sintaxis!";
             }
             catch (ArithmeticException)
             {
                 txtbFormula.Text = "0";
+                txtbHistorial.Text = "";
                 lblError.Text = "No se puede dividir por 0! / Infinity - Negative Infinity";
             }
             finally
