@@ -36,7 +36,6 @@ namespace Calculadora
             btnRestar.Enabled = true;
             btnPunto.Enabled = true;
             btnPA.Enabled = true;
-            btnPC.Enabled = true;
 
             Button button = (Button)sender;
 
@@ -68,11 +67,13 @@ namespace Calculadora
                 //Luego de un signo multiplicar no puede haber un / o una +
                 btnDividir.Enabled = false;
                 btnSumar.Enabled = false;
+                btnMultiplicar.Enabled = false;
             }
             else if (button.Text == btnDividir.Text)
             {
                 //Luego de un signo dividir no puede haber una * o una +
                 btnMultiplicar.Enabled = false;
+                btnDividir.Enabled = false;
                 btnSumar.Enabled = false;
             }
             else if (txtbFormula.Text == "0")
@@ -108,8 +109,6 @@ namespace Calculadora
                 btnSumar.Enabled = true;
                 btnRestar.Enabled = true;
                 btnPunto.Enabled = true;
-                btnPA.Enabled = true;
-                btnPA.Enabled = true;
                 btnIgual.Enabled = true;
             }
 
@@ -129,6 +128,7 @@ namespace Calculadora
             btnMultiplicar.Enabled = false;
             btnDividir.Enabled = false;
             btnSumar.Enabled = false;
+            btnPA.Enabled = true;
             resultado = null;
         }
 
@@ -232,9 +232,16 @@ namespace Calculadora
                     btnSumar.Enabled = false;
                     btnRestar.Enabled = false;
                 }
-                else if (txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "*" || txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "/")
+                else if (txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "*")
                 {
                     //Si el último caracter es *, se deshabilita * , / y +
+                    btnMultiplicar.Enabled = false;
+                    btnDividir.Enabled = false;
+                    btnSumar.Enabled = false;
+                }
+                else if (txtbFormula.Text.Substring(txtbFormula.Text.Length - 1, 1) == "/")
+                {
+                    //Si el último caracter es /, se deshabilita * , / y +
                     btnMultiplicar.Enabled = false;
                     btnDividir.Enabled = false;
                     btnSumar.Enabled = false;
@@ -296,6 +303,9 @@ namespace Calculadora
                 txtbFormula.Text = "0";
                 txtbHistorial.Text = "";
                 lblError.Text = "Error de Casteo, revisar operacion!";
+                contParentesis = 0;
+                lblContParentesis.Text = contParentesis.ToString();
+                lblContParentesis.Visible = false;
             }
             catch (SyntaxErrorException)
             {
@@ -311,6 +321,9 @@ namespace Calculadora
                 txtbFormula.Text = "0";
                 txtbHistorial.Text = "";
                 lblError.Text = "No se puede dividir por 0! / Infinity - Negative Infinity";
+                contParentesis = 0;
+                lblContParentesis.Text = contParentesis.ToString();
+                lblContParentesis.Visible = false;
             }
             finally
             {
