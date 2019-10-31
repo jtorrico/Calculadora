@@ -89,6 +89,11 @@ namespace Calculadora
             {
                 btnPunto.Enabled = false;
             }
+            else if(Int32.TryParse(button.Text, out int a) == true)
+            {
+                btnPA.Enabled = false;
+                btnPC.Enabled = false;
+            }
             else
             {
                 //Si no se cumple ninguna de las condiciones anteriores se habilitan todos los botones
@@ -97,6 +102,8 @@ namespace Calculadora
                 btnSumar.Enabled = true;
                 btnRestar.Enabled = true;
                 btnPunto.Enabled = true;
+                btnPA.Enabled = true;
+                btnPA.Enabled = true;
             }
 
 
