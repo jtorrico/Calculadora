@@ -123,6 +123,8 @@ namespace Calculadora
             //Muestra la cantidad de parentesis abiertos
             contParentesis += 1;
             lblContParentesis.Text = contParentesis.ToString();
+            //Se deshabilita el boton para evitar que el contador de parentesis sea impar.
+            btnIgual.Enabled = false;
 
             if (contParentesis > 0)
             {
@@ -141,7 +143,8 @@ namespace Calculadora
 
         private void BtnPC_Click(object sender, EventArgs e)
         {
-
+            //Se habilita el boton cuando se cierra el parentesis para continuar la operacion.
+            btnIgual.Enabled = true;
             //Cierra el parentesis y disminuye la cantidad de parentesis abiertos
             contParentesis -= 1;
             lblContParentesis.Text = contParentesis.ToString();

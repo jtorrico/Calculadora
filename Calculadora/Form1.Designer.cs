@@ -61,7 +61,7 @@
             // 
             this.txtbFormula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.txtbFormula.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbFormula.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtbFormula.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtbFormula.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbFormula.ForeColor = System.Drawing.SystemColors.MenuText;
             this.txtbFormula.Location = new System.Drawing.Point(13, 52);
@@ -72,6 +72,7 @@
             this.txtbFormula.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtbFormula.Size = new System.Drawing.Size(316, 55);
             this.txtbFormula.TabIndex = 1;
+            this.txtbFormula.TabStop = false;
             this.txtbFormula.Text = "0";
             this.txtbFormula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbFormula.TextChanged += new System.EventHandler(this.TxtbFormula_TextChanged);
