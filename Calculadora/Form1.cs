@@ -35,6 +35,8 @@ namespace Calculadora
             btnSumar.Enabled = true;
             btnRestar.Enabled = true;
             btnPunto.Enabled = true;
+            btnPA.Enabled = true;
+            btnPC.Enabled = true;
 
             Button button = (Button)sender;
 
@@ -94,6 +96,10 @@ namespace Calculadora
                 btnPA.Enabled = false;
                 btnPC.Enabled = false;
             }
+            else if (contParentesis > 0)
+            {
+                btnIgual.Enabled = false;
+            }
             else
             {
                 //Si no se cumple ninguna de las condiciones anteriores se habilitan todos los botones
@@ -104,6 +110,7 @@ namespace Calculadora
                 btnPunto.Enabled = true;
                 btnPA.Enabled = true;
                 btnPA.Enabled = true;
+                btnIgual.Enabled = true;
             }
 
 
@@ -130,8 +137,6 @@ namespace Calculadora
             //Muestra la cantidad de parentesis abiertos
             contParentesis += 1;
             lblContParentesis.Text = contParentesis.ToString();
-            //Se deshabilita el boton para evitar que el contador de parentesis sea impar.
-            btnIgual.Enabled = false;
 
             if (contParentesis > 0)
             {
@@ -150,8 +155,6 @@ namespace Calculadora
 
         private void BtnPC_Click(object sender, EventArgs e)
         {
-            //Se habilita el boton cuando se cierra el parentesis para continuar la operacion.
-            btnIgual.Enabled = true;
             //Cierra el parentesis y disminuye la cantidad de parentesis abiertos
             contParentesis -= 1;
             lblContParentesis.Text = contParentesis.ToString();
@@ -216,8 +219,8 @@ namespace Calculadora
                     }
                 }
 
-                    //Se elimina el último caracter ingresado
-                    txtbFormula.Text = txtbFormula.Text.Substring(0, txtbFormula.Text.Length - 1);
+                //Se elimina el último caracter ingresado
+                txtbFormula.Text = txtbFormula.Text.Substring(0, txtbFormula.Text.Length - 1);
                 txtbHistorial.Text = txtbHistorial.Text.Substring(0, txtbHistorial.Text.Length - 1);
 
                 //Control de botones al borrar
@@ -242,6 +245,7 @@ namespace Calculadora
                     btnDividir.Enabled = true;
                     btnSumar.Enabled = true;
                     btnRestar.Enabled = true;
+                    btnIgual.Enabled = true;
                 }
 
 
@@ -298,6 +302,9 @@ namespace Calculadora
                 txtbFormula.Text = "0";
                 txtbHistorial.Text = "";
                 lblError.Text = "Error de Sintaxis!";
+                contParentesis = 0;
+                lblContParentesis.Text = contParentesis.ToString();
+                lblContParentesis.Visible = false;
             }
             catch (ArithmeticException)
             {
